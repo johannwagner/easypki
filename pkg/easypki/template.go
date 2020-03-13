@@ -49,6 +49,7 @@ func defaultTemplate(genReq *Request, publicKey crypto.PublicKey) error {
 
 func caTemplate(genReq *Request, intermediateCA bool) error {
 	genReq.Template.KeyUsage = x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign | x509.KeyUsageCRLSign
+	genReq.Template.ExtKeyUsage = append(genReq.Template.ExtKeyUsage, x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth)
 	genReq.Template.BasicConstraintsValid = true
 	genReq.Template.MaxPathLenZero = true
 
