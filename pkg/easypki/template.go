@@ -48,8 +48,33 @@ func defaultTemplate(genReq *Request, publicKey crypto.PublicKey) error {
 }
 
 func caTemplate(genReq *Request, intermediateCA bool) error {
-	genReq.Template.KeyUsage = x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign | x509.KeyUsageCRLSign
-	genReq.Template.ExtKeyUsage = append(genReq.Template.ExtKeyUsage, x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth)
+	genReq.Template.KeyUsage = x509.KeyUsageDigitalSignature |
+		x509.KeyUsageContentCommitment |
+		x509.KeyUsageKeyEncipherment |
+		x509.KeyUsageDataEncipherment |
+		x509.KeyUsageKeyAgreement |
+		x509.KeyUsageCertSign |
+		x509.KeyUsageCRLSign
+
+	genReq.Template.ExtKeyUsage = []x509.ExtKeyUsage{
+		x509.ExtKeyUsageAny,
+		x509.ExtKeyUsageServerAuth,
+		x509.ExtKeyUsageClientAuth,
+		x509.ExtKeyUsageCodeSigning,
+		x509.ExtKeyUsageEmailProtection,
+		x509.ExtKeyUsageIPSECEndSystem,
+		x509.ExtKeyUsageIPSECTunnel,
+		x509.ExtKeyUsageIPSECUser,
+		x509.ExtKeyUsageTimeStamping,
+		x509.ExtKeyUsageOCSPSigning,
+		x509.ExtKeyUsageMicrosoftServerGatedCrypto,
+		x509.ExtKeyUsageNetscapeServerGatedCrypto,
+		x509.ExtKeyUsageMicrosoftCommercialCodeSigning,
+		x509.ExtKeyUsageMicrosoftKernelCodeSigning,
+	}
+
+
+
 	genReq.Template.BasicConstraintsValid = true
 	genReq.Template.MaxPathLenZero = true
 
@@ -64,12 +89,28 @@ func caTemplate(genReq *Request, intermediateCA bool) error {
 }
 
 func nonCATemplate(genReq *Request) {
-	if !genReq.IsClientCertificate {
-		genReq.Template.ExtKeyUsage = append(genReq.Template.ExtKeyUsage, x509.ExtKeyUsageServerAuth)
-	}
-	// Clients can only use ClientAuth
-	genReq.Template.ExtKeyUsage = append(genReq.Template.ExtKeyUsage, x509.ExtKeyUsageClientAuth)
+	genReq.Template.KeyUsage = x509.KeyUsageDigitalSignature |
+		x509.KeyUsageContentCommitment |
+		x509.KeyUsageKeyEncipherment |
+		x509.KeyUsageDataEncipherment |
+		x509.KeyUsageKeyAgreement |
+		x509.KeyUsageCertSign |
+		x509.KeyUsageCRLSign
 
-	// set the usage for non-CA certificates
-	genReq.Template.KeyUsage = x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment
+	genReq.Template.ExtKeyUsage = []x509.ExtKeyUsage{
+		x509.ExtKeyUsageAny,
+		x509.ExtKeyUsageServerAuth,
+		x509.ExtKeyUsageClientAuth,
+		x509.ExtKeyUsageCodeSigning,
+		x509.ExtKeyUsageEmailProtection,
+		x509.ExtKeyUsageIPSECEndSystem,
+		x509.ExtKeyUsageIPSECTunnel,
+		x509.ExtKeyUsageIPSECUser,
+		x509.ExtKeyUsageTimeStamping,
+		x509.ExtKeyUsageOCSPSigning,
+		x509.ExtKeyUsageMicrosoftServerGatedCrypto,
+		x509.ExtKeyUsageNetscapeServerGatedCrypto,
+		x509.ExtKeyUsageMicrosoftCommercialCodeSigning,
+		x509.ExtKeyUsageMicrosoftKernelCodeSigning,
+	}
 }
