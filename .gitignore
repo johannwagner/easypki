@@ -2,3 +2,5 @@
 **/main
 *.swp
 .vscode
+.idea
+easypki
