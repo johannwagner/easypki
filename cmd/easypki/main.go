@@ -28,9 +28,9 @@ import (
 
 	"encoding/pem"
 
-	"github.com/google/easypki/pkg/certificate"
-	"github.com/google/easypki/pkg/easypki"
-	"github.com/google/easypki/pkg/store"
+	"github.com/johannwagner/easypki/pkg/certificate"
+	"github.com/johannwagner/easypki/pkg/easypki"
+	"github.com/johannwagner/easypki/pkg/store"
 	"github.com/urfave/cli"
 )
 

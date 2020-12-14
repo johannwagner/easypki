@@ -1,6 +1,6 @@
 [![Build
-Status](https://travis-ci.org/google/easypki.svg?branch=master)](https://travis-ci.org/google/easypki)
-[![codecov](https://codecov.io/gh/google/easypki/branch/master/graph/badge.svg)](https://codecov.io/gh/google/easypki)
+Status](https://travis-ci.org/johannwagner/easypki.svg?branch=master)](https://travis-ci.org/johannwagner/easypki)
+[![codecov](https://codecov.io/gh/johannwagner/easypki/branch/master/graph/badge.svg)](https://codecov.io/gh/johannwagner/easypki)
 
 easypki
 ======
@@ -11,12 +11,12 @@ CLI.
 
 # API
 
-[![godoc](https://godoc.org/github.com/google/easypki?status.svg)](https://godoc.org/github.com/google/easypki)
+[![godoc](https://godoc.org/github.com/johannwagner/easypki?status.svg)](https://godoc.org/github.com/johannwagner/easypki)
 
 For the latest API:
 
 ```
-import "gopkg.in/google/easypki.v1"
+import "gopkg.in/johannwagner/easypki.v1"
 ```
 
 ## Legacy API
@@ -28,7 +28,7 @@ If you used the legacy API that was only writing files to disk, a tag has been
 applied so you can still import it:
 
 ```
-import "gopkg.in/google/easypki.v0"
+import "gopkg.in/johannwagner/easypki.v0"
 ```
 
 # CLI
@@ -38,7 +38,7 @@ compatible with openssl, so you are not restrained.
 
 ```
 # Get the CLI:
-go get github.com/google/easypki/cmd/easypki
+go get github.com/johannwagner/easypki/cmd/easypki
 
 
 # You can also pass the following through arguments if you do not want to use

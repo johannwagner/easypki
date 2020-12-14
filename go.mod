@@ -1,4 +1,4 @@
-module github.com/google/easypki
+module github.com/johannwagner/easypki
 
 go 1.14
 
